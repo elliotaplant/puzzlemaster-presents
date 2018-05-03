@@ -6,8 +6,8 @@ function loadAnimals() {
   return loadFileAsArray('allAnimals.txt');
 }
 
-function loadAllWords() {
-  return loadFileAsArray('../wordSupplies/allWords.txt');
+function loadAnimalPlurals() {
+  return loadFileAsArray('allAnimalPlurals.txt');
 }
 
 function loadCountries() {
@@ -16,19 +16,18 @@ function loadCountries() {
 
 function loadFileAsArray(filename) {
   const fileAsString = fs.readFileSync(filename, 'utf8');
-  return fileAsString.split('\n');
+  return fileAsString.split('\n').filter(i => i);
 }
 
-// Create all pairs of animals
 function allAnimalPairs() {
   const allAnimals = loadAnimals();
+  const allAnimalPlurals = loadAnimalPlurals();
   const flattenedPairs = []
   // For each animal
   allAnimals.forEach(singularAnimal => {
     // For every other animal
-    allAnimals.forEach(pluralAnimal => {
+    allAnimals.concat(allAnimalPlurals).forEach(pluralAnimal => {
       const combined = `${singularAnimal} ${pluralAnimal}`
-      const combinedPlural = `${singularAnimal} ${pluralAnimal}s`
       flattenedPairs.push([smooshSort(combined), combined]);
     });
   });
@@ -48,7 +47,6 @@ function smooshedCountries() {
 function findCountryAnimals() {
   const countries = smooshedCountries();
   const validAnimals = allAnimalPairs().filter(animalPair => countries.has(animalPair[0]));
-  // console.log('allAnimalPairs()', allAnimalPairs());
   return validAnimals.map(validAnimal => [countries.get(validAnimal[0]), validAnimal[1]]);
 }
 
