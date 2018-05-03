@@ -6,6 +6,14 @@ function loadFileAsArray(filename) {
   return fileAsString.split('\n').filter(i => i);
 }
 
+function timer() {
+  const start = Date.now();
+  return function end() {
+    return Date.now() - start;
+  }
+}
+
 module.exports = {
-  loadFileAsArray
+  loadFileAsArray,
+  timer,
 }
