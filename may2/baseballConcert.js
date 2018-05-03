@@ -61,11 +61,11 @@ function loadConcertWords() {
 }
 
 function loadAllWords() {
-  return new Set(loadFileAsArray('allWords.txt'));
+  return new Set(loadFileAsArray('../wordSupplies/allWords.txt'));
 }
 
 function loadAllNouns() {
-  return new Set(loadFileAsArray('allNouns.txt'));
+  return new Set(loadFileAsArray('../wordSupplies/allNouns.txt'));
 }
 
 function loadBaseballNames() {
