@@ -6,6 +6,10 @@ function loadAnimals() {
   return loadFileAsArray('allAnimals.txt');
 }
 
+function loadAllWords() {
+  return loadFileAsArray('../wordSupplies/allWords.txt');
+}
+
 function loadCountries() {
   return loadFileAsArray('allCountries.txt');
 }
@@ -23,7 +27,8 @@ function allAnimalPairs() {
   allAnimals.forEach(singularAnimal => {
     // For every other animal
     allAnimals.forEach(pluralAnimal => {
-      const combined = `${singularAnimal} ${pluralAnimal}s`
+      const combined = `${singularAnimal} ${pluralAnimal}`
+      const combinedPlural = `${singularAnimal} ${pluralAnimal}s`
       flattenedPairs.push([smooshSort(combined), combined]);
     });
   });

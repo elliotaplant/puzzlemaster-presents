@@ -1,5 +1,3 @@
-canidae
-felidae
 cat
 cattle
 dog
